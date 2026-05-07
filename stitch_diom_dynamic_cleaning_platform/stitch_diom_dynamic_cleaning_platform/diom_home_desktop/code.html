@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DIOM - Dynamic Cleaning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;700&amp;family=Outfit:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#e3dbfb",
+                        "background": "#fbf8ff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#140067",
+                        "surface-dim": "#dbd9df",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1b20",
+                        "secondary": "#006970",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#4d4761",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c5c0ff",
+                        "on-secondary-fixed-variant": "#004f55",
+                        "on-secondary-container": "#006e75",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1d1830",
+                        "tertiary-container": "#655f7a",
+                        "outline": "#787585",
+                        "surface-container-low": "#f5f2f9",
+                        "surface-container": "#efedf3",
+                        "surface-container-high": "#eae7ee",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#574acb",
+                        "surface-container-highest": "#e4e1e8",
+                        "tertiary-fixed": "#e6defe",
+                        "surface-variant": "#e4e1e8",
+                        "on-background": "#1b1b20",
+                        "secondary-fixed": "#7ff4ff",
+                        "primary": "#4234b6",
+                        "surface": "#fbf8ff",
+                        "on-secondary-fixed": "#002022",
+                        "primary-fixed-dim": "#c5c0ff",
+                        "secondary-container": "#7bf1fc",
+                        "secondary-fixed-dim": "#5fd7e2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fbf8ff",
+                        "inverse-on-surface": "#f2f0f6",
+                        "tertiary-fixed-dim": "#cac2e2",
+                        "outline-variant": "#c8c4d6",
+                        "primary-fixed": "#e4dfff",
+                        "on-primary-fixed-variant": "#3e2fb2",
+                        "on-surface-variant": "#474554",
+                        "inverse-surface": "#303035",
+                        "on-tertiary-fixed-variant": "#48435d",
+                        "on-primary-container": "#e0dbff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#5b4fcf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "margin": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["DM Sans"],
+                        "h2": ["Outfit"],
+                        "body-lg": ["DM Sans"],
+                        "h3": ["Outfit"],
+                        "label-sm": ["DM Sans"],
+                        "h1": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "700" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-background antialiased">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 z-50 bg-surface/90 shadow-sm shadow-[0_4px_20px_rgba(91,79,207,0.08)] sticky top-0 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-margin py-xs max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<a class="font-h2 text-h2 text-primary tracking-tight" href="#">DIOM</a>
+</div>
+<div class="hidden md:flex items-center gap-gutter font-body-md text-body-md">
+<a class="text-primary border-b-2 border-primary pb-1 font-bold active:scale-95 duration-200 ease-in-out" href="#">Inicio</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors px-2 active:scale-95 duration-200 ease-in-out" href="#">Profesionales</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors px-2 active:scale-95 duration-200 ease-in-out" href="#">¿Cómo funciona?</a>
+</div>
+<div class="flex items-center gap-sm">
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors px-2" href="#">Iniciar sesión</a>
+<a class="bg-primary-container text-on-primary rounded-xl px-4 py-2 font-body-md hover:bg-primary transition-colors" href="#">Registrarme como profesional</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-[#D8D0F0] to-[#C5C9E8] py-xl overflow-hidden rounded-b-[40px] mb-xl">
+<div class="max-w-7xl mx-auto px-margin relative z-10 flex flex-col items-center text-center">
+<h1 class="font-h1 text-h1 text-on-tertiary-fixed mb-sm max-w-4xl">Encontrá el profesional de limpieza ideal en Santa Fe</h1>
+<p class="font-body-lg text-body-lg text-on-tertiary-fixed-variant mb-xl max-w-2xl">Profesionales verificados, contacto directo y sin comisiones</p>
+<!-- Search Bar -->
+<div class="bg-surface rounded-full p-2 shadow-[0_8px_30px_rgba(91,79,207,0.12)] flex flex-col md:flex-row w-full max-w-5xl gap-2 items-center">
+<div class="flex-1 flex items-center px-4 py-2 border-b md:border-b-0 md:border-r border-outline-variant/30 w-full md:w-auto">
+<span class="material-symbols-outlined text-outline mr-2" data-icon="cleaning_services">cleaning_services</span>
+<select class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body-md outline-none appearance-none cursor-pointer">
+<option>Servicio (Hogar, Comercial...)</option>
+<option>Limpieza del hogar</option>
+<option>Limpieza profunda</option>
+<option>Oficinas</option>
+</select>
+</div>
+<div class="flex-1 flex items-center px-4 py-2 border-b md:border-b-0 md:border-r border-outline-variant/30 w-full md:w-auto">
+<span class="material-symbols-outlined text-outline mr-2" data-icon="location_on">location_on</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body-md outline-none placeholder:text-outline/70" placeholder="Ubicación" type="text"/>
+</div>
+<div class="flex-1 flex items-center px-4 py-2 w-full md:w-auto">
+<span class="material-symbols-outlined text-outline mr-2" data-icon="calendar_month">calendar_month</span>
+<select class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body-md outline-none appearance-none cursor-pointer">
+<option>Disponibilidad</option>
+<option>Hoy</option>
+<option>Esta semana</option>
+</select>
+</div>
+<button class="bg-[#4EC9D4] hover:bg-[#3db8c3] text-on-primary font-bold rounded-full px-8 py-3 transition-colors w-full md:w-auto whitespace-nowrap shadow-sm">
+                    Buscar profesional
+                </button>
+</div>
+<!-- Chips -->
+<div class="flex flex-wrap justify-center gap-sm mt-lg">
+<span class="bg-primary-container/10 text-primary-container px-4 py-1.5 rounded-full font-body-md text-sm cursor-pointer hover:bg-primary-container/20 transition-colors border border-primary-container/20">Limpieza del hogar</span>
+<span class="bg-primary-container/10 text-primary-container px-4 py-1.5 rounded-full font-body-md text-sm cursor-pointer hover:bg-primary-container/20 transition-colors border border-primary-container/20">Limpieza profunda</span>
+<span class="bg-primary-container/10 text-primary-container px-4 py-1.5 rounded-full font-body-md text-sm cursor-pointer hover:bg-primary-container/20 transition-colors border border-primary-container/20">Vidrios</span>
+<span class="bg-primary-container/10 text-primary-container px-4 py-1.5 rounded-full font-body-md text-sm cursor-pointer hover:bg-primary-container/20 transition-colors border border-primary-container/20">Oficinas</span>
+<span class="bg-primary-container/10 text-primary-container px-4 py-1.5 rounded-full font-body-md text-sm cursor-pointer hover:bg-primary-container/20 transition-colors border border-primary-container/20">Post-obra</span>
+</div>
+</div>
+</section>
+<!-- Banner Publicitario 1 -->
+<div class="max-w-7xl mx-auto px-margin mb-xl">
+<div class="bg-[#e0f7fa] rounded-[20px] p-md relative shadow-[0_4px_20px_rgba(91,79,207,0.05)] border border-[#b2ebf2] flex items-center justify-between">
+<div class="absolute top-sm right-sm bg-surface/80 backdrop-blur-sm px-2 py-1 rounded font-label-sm text-label-sm text-outline uppercase tracking-wider">Publicidad</div>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="local_mall">local_mall</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">CleanPro Insumos</h3>
+<p class="font-body-md text-on-surface-variant">15% off para profesionales DIOM en tu primera compra</p>
+</div>
+</div>
+<button class="hidden md:block bg-secondary text-on-secondary px-6 py-2 rounded-xl font-bold hover:bg-secondary/90 transition-colors">Aprovechar</button>
+</div>
+</div>
+<!-- Servicios más solicitados -->
+<section class="max-w-7xl mx-auto px-margin mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-lg">Servicios más solicitados</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="home">home</span>
+</div>
+<h3 class="font-h3 text-[20px] font-semibold text-on-surface mb-xs">Limpieza del hogar</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-md">38 profesionales</p>
+<button class="text-primary-container font-bold hover:text-primary transition-colors flex items-center gap-1 mt-auto">
+                    Ver profesionales <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="mop">mop</span>
+</div>
+<h3 class="font-h3 text-[20px] font-semibold text-on-surface mb-xs">Limpieza profunda</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-md">24 profesionales</p>
+<button class="text-primary-container font-bold hover:text-primary transition-colors flex items-center gap-1 mt-auto">
+                    Ver profesionales <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="business">business</span>
+</div>
+<h3 class="font-h3 text-[20px] font-semibold text-on-surface mb-xs">Oficinas</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-md">17 profesionales</p>
+<button class="text-primary-container font-bold hover:text-primary transition-colors flex items-center gap-1 mt-auto">
+                    Ver profesionales <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="cleaning_bucket">cleaning_bucket</span>
+</div>
+<h3 class="font-h3 text-[20px] font-semibold text-on-surface mb-xs">Vidrios</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-md">12 profesionales</p>
+<button class="text-primary-container font-bold hover:text-primary transition-colors flex items-center gap-1 mt-auto">
+                    Ver profesionales <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ¿Cómo funciona? -->
+<section class="max-w-7xl mx-auto px-margin mb-xl">
+<div class="bg-surface-container-low rounded-[24px] px-xl py-lg">
+<h2 class="font-h2 text-h2 text-on-surface mb-lg text-center">¿Cómo funciona?</h2>
+<div class="flex flex-col md:flex-row items-start justify-between gap-sm">
+<!-- Paso 1 -->
+<div class="flex-1 flex flex-col items-center text-center px-sm">
+<div class="w-14 h-14 rounded-full bg-[#5B4FCF] text-white flex items-center justify-center text-xl font-bold mb-sm shadow-[0_4px_20px_rgba(91,79,207,0.25)]">1</div>
+<h3 class="font-h3 text-[18px] font-semibold text-on-surface mb-xs mt-xs">Buscás el servicio</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Ingresá qué tipo de limpieza necesitás y tu ubicación en Santa Fe.</p>
+</div>
+<div class="hidden md:flex items-center mt-7 text-[#B8A9E8] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Paso 2 -->
+<div class="flex-1 flex flex-col items-center text-center px-sm">
+<div class="w-14 h-14 rounded-full bg-[#5B4FCF] text-white flex items-center justify-center text-xl font-bold mb-sm shadow-[0_4px_20px_rgba(91,79,207,0.25)]">2</div>
+<h3 class="font-h3 text-[18px] font-semibold text-on-surface mb-xs mt-xs">Encontrás profesionales verificados cerca tuyo</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Ves perfiles con identidad validada, reseñas y disponibilidad real.</p>
+</div>
+<div class="hidden md:flex items-center mt-7 text-[#B8A9E8] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Paso 3 -->
+<div class="flex-1 flex flex-col items-center text-center px-sm">
+<div class="w-14 h-14 rounded-full bg-[#5B4FCF] text-white flex items-center justify-center text-xl font-bold mb-sm shadow-[0_4px_20px_rgba(91,79,207,0.25)]">3</div>
+<h3 class="font-h3 text-[18px] font-semibold text-on-surface mb-xs mt-xs">Contactás directamente sin intermediarios</h3>
+<p class="font-body-md text-sm text-on-surface-variant">Hablás directo con el profesional, sin pasar por ningún filtro de la plataforma.</p>
+</div>
+<div class="hidden md:flex items-center mt-7 text-[#B8A9E8] flex-shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<!-- Paso 4 -->
+<div class="flex-1 flex flex-col items-center text-center px-sm">
+<div class="w-14 h-14 rounded-full bg-[#5B4FCF] text-white flex items-center justify-center text-xl font-bold mb-sm shadow-[0_4px_20px_rgba(91,79,207,0.25)]">4</div>
+<h3 class="font-h3 text-[18px] font-semibold text-on-surface mb-xs mt-xs">Acordás el servicio y el pago de forma libre</h3>
+<p class="font-body-md text-sm text-on-surface-variant">El precio, la modalidad y el pago se arreglan directamente entre vos y el profesional.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Profesionales destacados -->
+<section class="max-w-7xl mx-auto px-margin mb-xl">
+<div class="flex justify-between items-end mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface">Profesionales destacados</h2>
+<a class="text-secondary font-bold hover:underline hidden md:block" href="#">Ver todos</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Pro 1 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)]">
+<div class="flex items-start gap-sm mb-sm">
+<img alt="Avatar Profesional" class="w-16 h-16 rounded-full object-cover border-2 border-surface-container" data-alt="A professional portrait of a smiling female cleaner in a neat uniform, bright lighting, conveying trust and reliability in a modern service app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoUQSEEIrK7WeR0ZMIvT0SR2Da9uMR7rwJXqz7-Enu0-W7EOx3yOmVH_Hu656pkHwjI1gm7KHD7gF6NBWyi3CS6Njz-Dp9hU8og4yz3o91zI2Yf_xlxAQKRI062cVfN4fOsvyaYiDunGxI-eofWTJruBykR-s3ZksYjbV-CcylfPhtOXr2wb2e_saftLLjl3RMvQzGPFaxNHEBUs_M2CIXWc_Wi49tA6k_NfqBTAoWullqZtDHiWoqFUXUCDhHp7XJNqRbNSPoYquA"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-h3 text-[18px] text-on-surface">María Gómez</h3>
+<div class="flex items-center text-[#f59e0b]">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="font-body-md text-sm ml-1 text-on-surface">4.9</span>
+</div>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Limpieza profunda</p>
+<div class="flex items-center text-outline text-xs mt-1">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="location_on">location_on</span> Barrio Candioti
+                        </div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 bg-[#dcfce7] text-[#166534] px-2 py-1 rounded text-xs font-bold mb-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span> Identidad verificada
+                </div>
+<button class="w-full bg-transparent border border-primary-container text-primary-container rounded-xl py-2 font-bold hover:bg-primary-container/5 transition-colors">Contactar</button>
+</div>
+<!-- Pro 2 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)]">
+<div class="flex items-start gap-sm mb-sm">
+<img alt="Avatar Profesional" class="w-16 h-16 rounded-full object-cover border-2 border-surface-container" data-alt="A professional portrait of a friendly male cleaner looking directly at the camera, conveying competence and warmth against a clean neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtd5d4YxYpu7tKcxatILAmTjgV1gsac4-5KT95vzIqOxQd4iuIWPQb5gFduX_CAFKkwbND-dCf6Kw6xLZq54EbSxpC199_jtXxfnGFRAgmZi207AWUcpcVdj1dxR7hgB2RDYgrxyH-uXjr2JNUYGjqehCKuIgkmsNeJDQZrmmaND9Np_OL06ax-AKsRuU2I2Gyg3g1YgTYrJiC2n1F2aPl5jeyObkHWp4rJ3G6v1_622KYlKr3vfffLtMFgDxQoLP8Avc4XAV5exbK"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-h3 text-[18px] text-on-surface">Carlos Ruiz</h3>
+<div class="flex items-center text-[#f59e0b]">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="font-body-md text-sm ml-1 text-on-surface">4.8</span>
+</div>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Limpieza de oficinas</p>
+<div class="flex items-center text-outline text-xs mt-1">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="location_on">location_on</span> Centro
+                        </div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 bg-[#dcfce7] text-[#166534] px-2 py-1 rounded text-xs font-bold mb-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span> Identidad verificada
+                </div>
+<button class="w-full bg-transparent border border-primary-container text-primary-container rounded-xl py-2 font-bold hover:bg-primary-container/5 transition-colors">Contactar</button>
+</div>
+<!-- Pro 3 -->
+<div class="bg-surface rounded-[20px] p-md shadow-[0_4px_20px_rgba(91,79,207,0.08)]">
+<div class="flex items-start gap-sm mb-sm">
+<img alt="Avatar Profesional" class="w-16 h-16 rounded-full object-cover border-2 border-surface-container" data-alt="A confident professional female cleaner in a high-quality headshot, natural lighting, looking approachable and experienced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbuJLH9FvxkAj3T6sKqqvVdgAJ6f-H9thdf8X5zdI2Q0ulmkwx5Fg4jx_9nKZwDvye0Naide5VR0gzQbEtsRfOfCn7FCy0h6cLe_pj1ROOI_M_NRzxVwzoEyfhs6Jf0NrBZWclNJV9xWt2C-zZxRlmpMliVMLICq_M1yjCifroAIEO2WxEcBq6DJT_Y-3BsYdCKCMh-4dw69y7xbd0ragp8YCGnBqupvqoSFMrARPvgVGEphVCHmrzlalPgIeUzlGWv7UAcY9v_q86"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-h3 text-[18px] text-on-surface">Laura Sosa</h3>
+<div class="flex items-center text-[#f59e0b]">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill">star</span>
+<span class="font-body-md text-sm ml-1 text-on-surface">5.0</span>
+</div>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Limpieza del hogar</p>
+<div class="flex items-center text-outline text-xs mt-1">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="location_on">location_on</span> Guadalupe
+                        </div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 bg-[#dcfce7] text-[#166534] px-2 py-1 rounded text-xs font-bold mb-md">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span> Identidad verificada
+                </div>
+<button class="w-full bg-transparent border border-primary-container text-primary-container rounded-xl py-2 font-bold hover:bg-primary-container/5 transition-colors">Contactar</button>
+</div>
+</div>
+</section>
+<!-- Banner Publicitario 2 -->
+<div class="max-w-7xl mx-auto px-margin mb-xl">
+<div class="bg-[#f3e5f5] rounded-[20px] p-md relative shadow-[0_4px_20px_rgba(91,79,207,0.05)] border border-[#e1bee7] flex items-center justify-between">
+<div class="absolute top-sm right-sm bg-surface/80 backdrop-blur-sm px-2 py-1 rounded font-label-sm text-label-sm text-outline uppercase tracking-wider">Publicidad</div>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Distribuidora Del Norte</h3>
+<p class="font-body-md text-on-surface-variant">Insumos al por mayor para profesionales de limpieza</p>
+</div>
+</div>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-xl font-bold hover:bg-primary/90 transition-colors">Ver catálogo</button>
+</div>
+</div>
+<!-- Diferenciadores -->
+<section class="max-w-7xl mx-auto px-margin mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-lg text-center">¿Por qué elegir DIOM?</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Diferenciador 1: Identidad verificada -->
+<div class="bg-surface rounded-[20px] p-lg shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-20 h-20 rounded-full bg-[#dcfce7] flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[#166534] text-5xl" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Identidad verificada</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Todos los profesionales validaron su DNI con RENAPER. Sabés con quién estás tratando.</p>
+</div>
+<!-- Diferenciador 2: Profesionales locales -->
+<div class="bg-surface rounded-[20px] p-lg shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-20 h-20 rounded-full bg-[#ede9ff] flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[#5B4FCF] text-5xl" data-icon="location_on">location_on</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Profesionales locales</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Solo Santa Fe y alrededores. Encontrás profesionales que conocen tu barrio.</p>
+</div>
+<!-- Diferenciador 3: Sin comisiones -->
+<div class="bg-surface rounded-[20px] p-lg shadow-[0_4px_20px_rgba(91,79,207,0.08)] flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300">
+<div class="w-20 h-20 rounded-full bg-[#e0f7fa] flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[#4EC9D4] text-5xl" data-icon="handshake">handshake</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-xs">Sin comisiones</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">El contacto y el pago son directos entre vos y el profesional. DIOM no cobra nada.</p>
+</div>
+</div>
+</section>
+<!-- Banner Publicitario 3 -->
+<div class="max-w-7xl mx-auto px-margin mb-xl">
+<div class="bg-[#fdf6e3] rounded-[20px] p-md relative shadow-[0_4px_20px_rgba(91,79,207,0.05)] border border-[#f5e6b2] flex items-center justify-between">
+<div class="absolute top-sm right-sm bg-surface/80 backdrop-blur-sm px-2 py-1 rounded font-label-sm text-label-sm text-outline uppercase tracking-wider">Publicidad</div>
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-[#4EC9D4]/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#4EC9D4]" data-icon="science">science</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Química Santa Fe</h3>
+<p class="font-body-md text-on-surface-variant">Pack iniciación para profesionales con 10% de descuento usando código <span class="font-bold text-[#5B4FCF]">DIOM10</span></p>
+</div>
+</div>
+<button class="hidden md:block bg-[#4EC9D4] hover:bg-[#3db8c3] text-white px-6 py-2 rounded-xl font-bold transition-colors">Ver oferta</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="full-width bg-surface-container-low border-t border-outline-variant/30 mt-xl">
+<div class="max-w-7xl mx-auto px-margin pt-xl pb-md">
+<div class="flex flex-col md:flex-row justify-between items-start gap-lg mb-lg">
+<!-- Logo + slogan + texto legal -->
+<div class="flex flex-col gap-xs items-center md:items-start">
+<span class="font-h2 text-h2 text-primary tracking-tight">DIOM</span>
+<span class="font-body-md text-sm text-[#5B4FCF] font-semibold tracking-wide">Dynamic Cleaning</span>
+<p class="font-body-md text-sm text-on-surface-variant text-center md:text-left max-w-xs mt-xs">
+DIOM no cobra comisiones. La plataforma no es responsable por el resultado de los servicios contratados.
+</p>
+</div>
+<!-- Links -->
+<div class="flex flex-wrap justify-center md:justify-start gap-md font-body-md text-on-surface-variant">
+<a class="hover:text-secondary hover:underline transition-all duration-300" href="#">Términos y condiciones</a>
+<a class="hover:text-secondary hover:underline transition-all duration-300" href="#">Privacidad</a>
+<a class="hover:text-secondary hover:underline transition-all duration-300" href="#">Cookies</a>
+<a class="hover:text-secondary hover:underline transition-all duration-300" href="#">Soporte</a>
+</div>
+<!-- Redes sociales -->
+<div class="flex flex-col items-center md:items-end gap-sm">
+<span class="font-body-md text-sm text-on-surface-variant font-semibold">Seguinos</span>
+<div class="flex items-center gap-sm">
+<!-- Instagram -->
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-[#5B4FCF] hover:text-white transition-colors" href="#" title="Instagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+</a>
+<!-- Facebook -->
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-[#5B4FCF] hover:text-white transition-colors" href="#" title="Facebook">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</a>
+<!-- WhatsApp -->
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-[#25D366] hover:text-white transition-colors" href="#" title="WhatsApp">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+</div>
+</div>
+</div>
+<!-- Copyright -->
+<div class="border-t border-outline-variant/30 pt-md text-center font-body-md text-sm text-on-surface-variant">
+© 2025 DIOM – Dynamic Cleaning. Todos los derechos reservados.
+</div>
+</div>
+</footer>
+</body></html>

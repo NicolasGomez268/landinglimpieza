@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DIOM – Perfil Profesional</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#4ec9d4",
+          "on-tertiary-fixed-variant": "#4b3e75",
+          "surface": "#fbf8ff",
+          "on-primary-fixed": "#002022",
+          "tertiary": "#63568f",
+          "on-tertiary-fixed": "#1f1147",
+          "on-secondary-fixed": "#140067",
+          "surface-container-high": "#eae7ee",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#fffbff",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#bfb0ef",
+          "inverse-on-surface": "#f2f0f6",
+          "outline": "#6d797b",
+          "on-background": "#1b1b20",
+          "error": "#ba1a1a",
+          "surface-container-low": "#f5f2f9",
+          "on-primary-fixed-variant": "#004f55",
+          "primary": "#006970",
+          "error-container": "#ffdad6",
+          "on-tertiary-container": "#4d4178",
+          "on-tertiary": "#ffffff",
+          "surface-tint": "#006970",
+          "secondary": "#5448c8",
+          "on-secondary": "#ffffff",
+          "tertiary-fixed-dim": "#cdbdfe",
+          "secondary-container": "#6d62e3",
+          "primary-fixed": "#7ff4ff",
+          "outline-variant": "#bcc9ca",
+          "tertiary-fixed": "#e8deff",
+          "surface-container": "#efedf3",
+          "on-surface": "#1b1b20",
+          "on-error": "#ffffff",
+          "on-primary": "#ffffff",
+          "surface-dim": "#dbd9df",
+          "primary-fixed-dim": "#5fd7e2",
+          "on-surface-variant": "#3d494a",
+          "surface-bright": "#fbf8ff",
+          "secondary-fixed": "#e4dfff",
+          "on-primary-container": "#005157",
+          "inverse-surface": "#303035",
+          "inverse-primary": "#5fd7e2",
+          "secondary-fixed-dim": "#c5c0ff",
+          "on-secondary-fixed-variant": "#3e2fb2",
+          "surface-container-highest": "#e4e1e8",
+          "surface-variant": "#e4e1e8",
+          "background": "#fbf8ff"
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"
+        },
+        spacing: {
+          "md": "16px", "xl": "32px", "lg": "24px", "sm": "12px",
+          "margin": "20px", "gutter": "16px", "base": "8px", "xs": "4px"
+        },
+        fontFamily: {
+          "h1": ["Plus Jakarta Sans"], "h2": ["Plus Jakarta Sans"],
+          "h3": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"], "label": ["Plus Jakarta Sans"]
+        },
+        fontSize: {
+          "h1": ["32px", {"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],
+          "h2": ["24px", {"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"700"}],
+          "h3": ["20px", {"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"600"}],
+          "body-lg": ["16px", {"lineHeight":"1.6","fontWeight":"400"}],
+          "body-sm": ["14px", {"lineHeight":"1.5","fontWeight":"400"}],
+          "label": ["12px", {"lineHeight":"1","letterSpacing":"0.05em","fontWeight":"600"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(160deg, #D8D0F0 0%, #C5C9E8 100%);
+    min-height: max(884px, 100dvh);
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+</style>
+</head>
+<body class="text-on-surface pb-36">
+
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface/70 backdrop-blur-xl border-b border-white/30 shadow-sm">
+  <div class="flex items-center gap-xs">
+    <a href="../diom_directorio/code.html" class="material-symbols-outlined text-secondary hover:opacity-80 transition-opacity p-2 -ml-2">arrow_back</a>
+    <a href="../diom_home_mobile/code.html" class="font-h2 text-h2 font-bold text-secondary">DIOM</a>
+  </div>
+  <div class="flex gap-md">
+    <span class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity cursor-pointer">share</span>
+    <span class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity cursor-pointer">favorite_border</span>
+  </div>
+</header>
+
+<main class="pt-24 px-margin space-y-md">
+
+  <!-- Profile Header -->
+  <section class="flex flex-col items-center text-center space-y-md pt-md">
+    <div class="relative">
+      <div class="w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-white shadow-[0_10px_30px_rgba(84,72,200,0.18)]">
+        <img
+          alt="Carlos Méndez"
+          class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfNJFU3hYPRBD-ooEzX5zPMMsZUuUsRxpN-uefETGjky02P5YQ-Dhbeucx9ZxWKsgKux0-C7fdAV_4jnY4KpU0Wh9hJciiM6fS84dWOVv76UHvVff3jR68Wjifm36KhEU0sepP8zaaoSvsLHlBs1_w9P6FwZR0FfsLDbXA-WAC-EAb7gi-7B4law43spR6bmnRxiJaaExdoBa18VI-_iPkkzi6r5w-74N1w5jp4iC3Yvp6oFNONi4NbqB-8Fw2UpjzOjfYyJrDYDU"
+        />
+      </div>
+      <!-- Verified badge -->
+      <div class="absolute bottom-1 right-1 bg-primary-container text-on-primary-container p-1 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+        <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">verified</span>
+      </div>
+    </div>
+    <div class="space-y-xs">
+      <h2 class="font-h2 text-h2 text-on-surface font-bold">Carlos Méndez</h2>
+      <div class="flex items-center justify-center gap-xs">
+        <span class="material-symbols-outlined text-[#f59e0b] text-[20px]" style="font-variation-settings:'FILL' 1;">star</span>
+        <span class="font-bold text-on-surface text-body-lg">4.9</span>
+        <span class="text-on-surface-variant text-body-sm">(128 reseñas)</span>
+      </div>
+      <!-- Verified identity badge -->
+      <div class="inline-flex items-center gap-1 bg-[#dcfce7] text-[#166534] px-3 py-1 rounded-full text-xs font-bold border border-[#bbf7d0] mt-xs">
+        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">verified_user</span>
+        Identidad verificada · DNI con RENAPER
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section class="glass-card rounded-[20px] p-md shadow-[0_10px_20px_rgba(84,72,200,0.08)]">
+    <h3 class="font-h3 text-h3 text-secondary mb-sm">Sobre mí</h3>
+    <p class="text-on-surface-variant font-body-lg leading-relaxed">
+      Especialista certificado con más de 8 años de experiencia en limpieza técnica y desinfección profunda.
+      Me enfoco en brindar un servicio detallado y eficiente, utilizando productos ecológicos que garantizan
+      un ambiente saludable para tu hogar u oficina. Trabajo en Santa Fe capital y alrededores.
+    </p>
+  </section>
+
+  <!-- Servicios ofrecidos -->
+  <section class="glass-card rounded-[20px] p-md shadow-[0_10px_20px_rgba(84,72,200,0.08)]">
+    <h3 class="font-h3 text-h3 text-secondary mb-sm">Servicios ofrecidos</h3>
+    <div class="flex flex-wrap gap-xs">
+      <span class="px-md py-xs bg-primary-container/20 text-on-primary-container rounded-full text-label font-label border border-primary-container/30">Limpieza Profunda</span>
+      <span class="px-md py-xs bg-primary-container/20 text-on-primary-container rounded-full text-label font-label border border-primary-container/30">Desinfección</span>
+      <span class="px-md py-xs bg-primary-container/20 text-on-primary-container rounded-full text-label font-label border border-primary-container/30">Limpieza de Alfombras</span>
+      <span class="px-md py-xs bg-primary-container/20 text-on-primary-container rounded-full text-label font-label border border-primary-container/30">Mantenimiento de Oficinas</span>
+      <span class="px-md py-xs bg-primary-container/20 text-on-primary-container rounded-full text-label font-label border border-primary-container/30">Limpieza Post-Obra</span>
+    </div>
+  </section>
+
+  <!-- Zona de cobertura -->
+  <section class="glass-card rounded-[20px] p-md shadow-[0_10px_20px_rgba(84,72,200,0.08)] overflow-hidden">
+    <div class="flex justify-between items-center mb-sm">
+      <h3 class="font-h3 text-h3 text-secondary">Zona de servicio</h3>
+      <div class="flex items-center gap-xs text-on-surface-variant">
+        <span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+        <span class="text-body-sm font-bold">Barrio Candioti, Santa Fe</span>
+      </div>
+    </div>
+    <!-- Map placeholder -->
+    <div class="h-40 w-full bg-gradient-to-br from-[#e8e4f8] to-[#d4d8f0] rounded-xl relative overflow-hidden flex items-center justify-center">
+      <!-- Simulated map grid -->
+      <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(#5448c8 1px, transparent 1px), linear-gradient(90deg, #5448c8 1px, transparent 1px); background-size: 32px 32px;"></div>
+      <!-- Pin -->
+      <div class="relative z-10 flex flex-col items-center gap-1">
+        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(84,72,200,0.40)]">
+          <span class="material-symbols-outlined text-white text-[20px]" style="font-variation-settings:'FILL' 1;">person_pin_circle</span>
+        </div>
+        <span class="bg-white/90 text-secondary text-[11px] font-bold px-2 py-0.5 rounded-full shadow-sm">Candioti, Santa Fe</span>
+      </div>
+      <div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+    </div>
+    <p class="text-body-sm text-on-surface-variant mt-sm">Cubre: Candioti · Centro · Guadalupe · San José del Rincón</p>
+  </section>
+
+  <!-- Reseñas recientes -->
+  <section class="glass-card rounded-[20px] p-md shadow-[0_10px_20px_rgba(84,72,200,0.08)]">
+    <div class="flex justify-between items-center mb-md">
+      <h3 class="font-h3 text-h3 text-secondary">Reseñas</h3>
+      <button class="text-primary text-label font-label hover:underline">Ver todas</button>
+    </div>
+    <div class="space-y-md">
+      <div class="flex gap-sm">
+        <div class="w-9 h-9 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 font-bold text-secondary text-body-sm">A</div>
+        <div>
+          <div class="flex items-center gap-xs mb-1">
+            <span class="font-bold text-body-sm text-on-surface">Ana García</span>
+            <div class="flex text-[#f59e0b]">
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+            </div>
+          </div>
+          <p class="text-body-sm text-on-surface-variant">Excelente trabajo, muy prolijo y puntual. Dejó el departamento impecable. ¡Lo recomiendo!</p>
+        </div>
+      </div>
+      <div class="flex gap-sm">
+        <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-primary text-body-sm">M</div>
+        <div>
+          <div class="flex items-center gap-xs mb-1">
+            <span class="font-bold text-body-sm text-on-surface">Marcelo Ríos</span>
+            <div class="flex text-[#f59e0b]">
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 0;">star</span>
+            </div>
+          </div>
+          <p class="text-body-sm text-on-surface-variant">Muy buen servicio. Trajo sus propios productos y terminó antes del horario acordado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-[72px] left-0 w-full px-margin z-40 pb-sm">
+  <button class="w-full h-14 bg-primary-container text-on-primary-container font-h3 text-h3 rounded-xl shadow-[0_8px_25px_rgba(78,201,212,0.40)] flex items-center justify-center gap-md active:scale-[0.98] transition-transform font-bold">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">chat_bubble</span>
+    Contactar directamente
+  </button>
+</div>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface/90 backdrop-blur-2xl border-t border-white/30 shadow-[0_-10px_20px_rgba(84,72,200,0.10)] rounded-t-xl">
+  <a href="../diom_home_mobile/code.html" class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-secondary transition-colors">
+    <span class="material-symbols-outlined">home</span>
+    <span class="font-label text-label">Inicio</span>
+  </a>
+  <a href="../diom_directorio/code.html" class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-secondary transition-colors">
+    <span class="material-symbols-outlined">search</span>
+    <span class="font-label text-label">Directorio</span>
+  </a>
+  <a href="../diom_mis_cupones/code.html" class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-secondary transition-colors">
+    <span class="material-symbols-outlined">local_activity</span>
+    <span class="font-label text-label">Mis Cupones</span>
+  </a>
+  <a href="../diom_perfil_profesional/code.html" class="flex flex-col items-center justify-center text-secondary font-bold scale-110">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">person</span>
+    <span class="font-label text-label">Perfil</span>
+  </a>
+</nav>
+
+</body>
+</html>

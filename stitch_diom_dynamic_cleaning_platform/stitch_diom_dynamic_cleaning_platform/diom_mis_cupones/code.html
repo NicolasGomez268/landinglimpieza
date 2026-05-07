@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DIOM – Mis Cupones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#4ec9d4",
+          "on-tertiary-fixed-variant": "#4b3e75",
+          "surface": "#fbf8ff",
+          "on-primary-fixed": "#002022",
+          "tertiary": "#63568f",
+          "surface-container-high": "#eae7ee",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#fffbff",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-container": "#bfb0ef",
+          "outline": "#6d797b",
+          "on-background": "#1b1b20",
+          "error": "#ba1a1a",
+          "surface-container-low": "#f5f2f9",
+          "on-primary-fixed-variant": "#004f55",
+          "primary": "#006970",
+          "error-container": "#ffdad6",
+          "on-tertiary-container": "#4d4178",
+          "surface-tint": "#006970",
+          "secondary": "#5448c8",
+          "on-secondary": "#ffffff",
+          "secondary-container": "#6d62e3",
+          "primary-fixed": "#7ff4ff",
+          "outline-variant": "#bcc9ca",
+          "tertiary-fixed": "#e8deff",
+          "surface-container": "#efedf3",
+          "on-surface": "#1b1b20",
+          "on-primary": "#ffffff",
+          "surface-dim": "#dbd9df",
+          "primary-fixed-dim": "#5fd7e2",
+          "on-surface-variant": "#3d494a",
+          "surface-bright": "#fbf8ff",
+          "secondary-fixed": "#e4dfff",
+          "on-primary-container": "#005157",
+          "inverse-surface": "#303035",
+          "secondary-fixed-dim": "#c5c0ff",
+          "surface-container-highest": "#e4e1e8",
+          "surface-variant": "#e4e1e8",
+          "background": "#fbf8ff"
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"
+        },
+        spacing: {
+          "md": "16px", "xl": "32px", "lg": "24px", "sm": "12px",
+          "margin": "20px", "gutter": "16px", "base": "8px", "xs": "4px"
+        },
+        fontFamily: {
+          "h1": ["Plus Jakarta Sans"], "h2": ["Plus Jakarta Sans"],
+          "h3": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"], "label": ["Plus Jakarta Sans"]
+        },
+        fontSize: {
+          "h1": ["32px", {"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],
+          "h2": ["24px", {"lineHeight":"1.3","letterSpacing":"-0.01em","fontWeight":"700"}],
+          "h3": ["20px", {"lineHeight":"1.4","letterSpacing":"0em","fontWeight":"600"}],
+          "body-lg": ["16px", {"lineHeight":"1.6","fontWeight":"400"}],
+          "body-sm": ["14px", {"lineHeight":"1.5","fontWeight":"400"}],
+          "label": ["12px", {"lineHeight":"1","letterSpacing":"0.05em","fontWeight":"600"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(160deg, #D8D0F0 0%, #C5C9E8 100%);
+    min-height: max(884px, 100dvh);
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 10px 20px rgba(84, 72, 200, 0.06);
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  /* Dashed coupon border effect */
+  .coupon-divider {
+    position: relative;
+  }
+  .coupon-divider::before,
+  .coupon-divider::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(160deg, #D8D0F0, #C5C9E8);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .coupon-divider::before { left: -10px; }
+  .coupon-divider::after  { right: -10px; }
+</style>
+</head>
+<body class="text-on-background pb-28">
+
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface/70 backdrop-blur-xl border-b border-white/30 shadow-sm">
+  <div class="flex items-center gap-sm">
+    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container shadow-sm">
+      <img
+        alt="Foto de perfil de María"
+        class="w-full h-full object-cover"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCPuxxpW1aH9cuFL1yFCivZz_xqzZ7SwpCob-D8mfbIGdrqAfbvFCmetVC_8-FD3JKuLnxQ_huis_SD5owutYSNoyWVB3nwsOtdx-ZU3SYvFU1mY_ycQ7mrbtqN31ISIe0llQfq1zLZz5lPPmsG2JjBkn8qbVsl98WdWEpOaX35stJ4xqcBFkAVQWOTTqbrx5YY_H1DN0ju9E4Z9OpdlnumTTdIcblIiyZcRCSFmaVHBmBis6RWB2QUr9NmeYh3h29SkRKihZFF2s"
+      />
+    </div>
+    <h1 class="font-h2 text-h2 font-bold text-secondary">¡Hola, María!</h1>
+  </div>
+  <button class="text-primary hover:opacity-80 transition-opacity">
+    <span class="material-symbols-outlined text-3xl">notifications</span>
+  </button>
+</header>
+
+<main class="mt-24 px-margin space-y-xl">
+
+  <!-- Stats -->
+  <section class="grid grid-cols-2 gap-gutter">
+    <div class="glass-card rounded-xl p-md flex flex-col items-center justify-center text-center">
+      <span class="font-label text-label text-on-surface-variant mb-xs">Visitas al perfil</span>
+      <span class="font-h1 text-h1 text-secondary">1.248</span>
+      <div class="flex items-center text-primary text-[11px] font-bold mt-xs">
+        <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+        +12% este mes
+      </div>
+    </div>
+    <div class="glass-card rounded-xl p-md flex flex-col items-center justify-center text-center">
+      <span class="font-label text-label text-on-surface-variant mb-xs">Cupones usados</span>
+      <span class="font-h1 text-h1 text-secondary">84</span>
+      <div class="flex items-center text-primary text-[11px] font-bold mt-xs">
+        <span class="material-symbols-outlined text-sm mr-1">check_circle</span>
+        Meta 80%
+      </div>
+    </div>
+  </section>
+
+  <!-- Cupones -->
+  <section class="space-y-md">
+    <div class="flex justify-between items-end">
+      <h2 class="font-h2 text-h3 text-secondary leading-tight font-bold">
+        Mis cupones y<br/>descuentos exclusivos
+      </h2>
+      <button class="text-primary font-label text-label hover:underline">Ver todos</button>
+    </div>
+
+    <div class="space-y-sm">
+
+      <!-- Cupón estrella: Química Santa Fe (DIOM10) -->
+      <div class="glass-card rounded-xl overflow-hidden flex h-32 border-2 border-[#4EC9D4]/40 relative">
+        <!-- Badge destacado -->
+        <div class="absolute top-sm left-sm bg-[#4EC9D4] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10">Exclusivo DIOM</div>
+        <div class="w-1/3 bg-[#e0f7fa] flex items-center justify-center p-md">
+          <span class="material-symbols-outlined text-[#006970] text-[48px]" style="font-variation-settings:'FILL' 1;">science</span>
+        </div>
+        <!-- Divider punteado -->
+        <div class="coupon-divider w-0 border-l-2 border-dashed border-[#4EC9D4]/40 my-3"></div>
+        <div class="flex-1 p-md flex flex-col justify-between">
+          <div>
+            <h3 class="font-body-lg text-secondary font-bold">Química Santa Fe – 10% OFF</h3>
+            <p class="font-body-sm text-on-surface-variant">Pack iniciación para profesionales. Código: <span class="font-bold text-secondary">DIOM10</span></p>
+          </div>
+          <button class="w-fit bg-primary-container text-on-primary-container px-lg py-1.5 rounded-full font-label text-label hover:opacity-90 active:scale-95 transition-all shadow-sm font-bold">
+            Ver código
+          </button>
+        </div>
+      </div>
+
+      <!-- Cupón 2: Zorro -->
+      <div class="glass-card rounded-xl overflow-hidden flex h-32">
+        <div class="w-1/3 bg-secondary-container/10 flex items-center justify-center p-md">
+          <img
+            alt="Producto Zorro"
+            class="w-full h-full object-contain mix-blend-multiply"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1XDEMuuWRJV2kAzmaJbNizaSOf4uAaL2Tx1sZeFWRCimjleHllG3Ep56o946Z7J8GuZ9umRooBffBQRBDSPC7buU1ToHTLZCAniSh5nt9qQp60r0hHlO-K9kCLV3YgG2_WpjcJkmPgoFd64EgM7viYXbDcABD-Yd0ZeTELoc9RyG5zmHnDuwDEB3wJSPTTM2VGGqZ2hwc_eLWmX9Dv-MkQ8Gg84eqv9caZlEKBkQtMeNqVwI3Ea3HrtvJf0PSPRKH8U6BiX5ZciY"
+          />
+        </div>
+        <div class="flex-1 p-md flex flex-col justify-between">
+          <div>
+            <h3 class="font-body-lg text-secondary font-bold">Zorro – 20% OFF</h3>
+            <p class="font-body-sm text-on-surface-variant">En toda la línea de desinfectantes líquidos.</p>
+          </div>
+          <button class="w-fit bg-primary-container text-on-primary-container px-lg py-1.5 rounded-full font-label text-label hover:opacity-90 active:scale-95 transition-all shadow-sm font-bold">
+            Ver código
+          </button>
+        </div>
+      </div>
+
+      <!-- Cupón 3: Ayudín -->
+      <div class="glass-card rounded-xl overflow-hidden flex h-32">
+        <div class="w-1/3 bg-primary-container/10 flex items-center justify-center p-md">
+          <img
+            alt="Producto Ayudín"
+            class="w-full h-full object-contain mix-blend-multiply"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0S_9arXPveVlYTRjtw-h0dnbpVigvRLc-eP2T_ITkCpnu7id-3fs9O9izw2LGb36YKa8lVbq3leQLuNNY5OAdpzNkjcwDx0GV-gnJNFBwymtFoytxRWkN-KZv3FBj-hocgaxXt5oA18FPRoI34ku_Gr_TOpdL7Hki-RclpUCSe-amIK4PM0MjOf8T2v-YZZYHmx2ugKtTysx8DYJf1lxkctnRC_vMDmB6op_i5965rYsd_YsDk-McahbmxPEdpZq2LDgiuxeoYog"
+          />
+        </div>
+        <div class="flex-1 p-md flex flex-col justify-between">
+          <div>
+            <h3 class="font-body-lg text-secondary font-bold">Ayudín – Promo especial</h3>
+            <p class="font-body-sm text-on-surface-variant">2×1 en lavandinas premium para el hogar.</p>
+          </div>
+          <button class="w-fit bg-primary-container text-on-primary-container px-lg py-1.5 rounded-full font-label text-label hover:opacity-90 active:scale-95 transition-all shadow-sm font-bold">
+            Ver código
+          </button>
+        </div>
+      </div>
+
+      <!-- Cupón bloqueado -->
+      <div class="glass-card rounded-xl overflow-hidden flex h-32 opacity-55">
+        <div class="w-1/3 bg-tertiary-container/10 flex items-center justify-center p-md">
+          <span class="material-symbols-outlined text-tertiary text-5xl opacity-40">cleaning_services</span>
+        </div>
+        <div class="flex-1 p-md flex flex-col justify-between">
+          <div>
+            <h3 class="font-body-lg text-secondary font-bold">LimpiaMas – 15% OFF</h3>
+            <p class="font-body-sm text-on-surface-variant">Kits de limpieza profunda industrial.</p>
+          </div>
+          <button class="w-fit border border-secondary text-secondary px-lg py-1.5 rounded-full font-label text-label">
+            🔒 Bloqueado
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tip del día -->
+  <section class="glass-card rounded-xl p-md bg-secondary/5 border border-secondary/15">
+    <div class="flex items-start gap-md">
+      <div class="bg-secondary p-xs rounded-lg text-on-secondary shrink-0">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">lightbulb</span>
+      </div>
+      <div>
+        <h4 class="font-body-lg text-secondary font-bold">Tip del día</h4>
+        <p class="font-body-sm text-on-tertiary-fixed-variant mt-1">
+          Completar tu perfil con fotos reales aumenta tus visitas en un 40%. ¡Actualizá tu galería hoy!
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface/90 backdrop-blur-2xl border-t border-white/30 shadow-[0_-10px_20px_rgba(84,72,200,0.10)] rounded-t-xl">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-secondary transition-colors" href="../diom_home_mobile/code.html">
+    <span class="material-symbols-outlined">home</span>
+    <span class="font-label text-[10px] mt-1">Inicio</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-secondary transition-colors" href="../diom_directorio/code.html">
+    <span class="material-symbols-outlined">search</span>
+    <span class="font-label text-[10px] mt-1">Directorio</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-secondary font-bold scale-110" href="../diom_mis_cupones/code.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">local_activity</span>
+    <span class="font-label text-[10px] mt-1">Mis Cupones</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-secondary transition-colors" href="../diom_perfil_profesional/code.html">
+    <span class="material-symbols-outlined">person</span>
+    <span class="font-label text-[10px] mt-1">Perfil</span>
+  </a>
+</nav>
+
+</body>
+</html>
